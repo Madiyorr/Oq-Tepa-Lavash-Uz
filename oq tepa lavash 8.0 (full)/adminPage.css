@@ -1,0 +1,133 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: rgb(107, 107, 107);
+}
+.admin-panel {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-left: 700px;
+  margin-bottom: 200px;
+}
+
+.admin-panel h2 {
+  text-align: center;
+}
+
+.admin-panel label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.admin-panel input, .admin-panel select {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.admin-panel button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.admin-panel button:hover {
+  background-color: #45a049;
+}
+
+/* Admin panelga kirish tugmasi uchun uslublar */
+.admin-login {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.admin-login .btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.admin-login .btn:hover {
+  background-color: #45a049;
+}
+
+/* Admin panel uchun uslublar */
+.admin-panel {
+  position: fixed;
+  bottom: 70px; /* Panelni pastga joylashtirish */
+  left: 20px; /* Chapga joylashtirish */
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 300px; /* Kichikroq qilish */
+  z-index: 1001;
+  display: none;
+}
+
+.admin-panel h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.admin-panel label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.admin-panel input,
+.admin-panel select,
+.admin-panel textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.admin-panel textarea {
+  height: 80px;
+  resize: vertical;
+}
+
+.admin-panel .btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.admin-panel .btn:hover {
+  background-color: #45a049;
+}
+
+/* Responsivlik uchun */
+@media (max-width: 768px) {
+  .admin-panel {
+      width: 90%;
+  }
+}

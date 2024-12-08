@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+    animation: fadeInnn 1s ease;
+}
+
+@keyframes fadeInnn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+
+header {
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../images/img/oqtepalavashuz_cover.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px);
+    z-index: 0;
+}
+
+.header__title,
+.header__link {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header__title img {
+    margin-right: 15px;
+    opacity: 0; /* Boshlanishda ko'rinmas */
+    animation: fadeIn 1s forwards; /* Animatsiya qo'shish */
+    animation-delay: 0.3s; /* Qayta ko'rinishni kechiktirish */
+}
+
+.header__title h1 {
+    font-size: 36px;
+    color: rgb(255, 0, 0);
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+    background-color: yellow;
+    width: 350px;
+    margin: 0 auto;
+    border-radius: 50px;
+    opacity: 0; /* Boshlanishda ko'rinmas */
+    animation: fadeIn 1s forwards; /* Animatsiya qo'shish */
+}
+
+.header__link {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    @media (max-width: 425px) {
+        gap: 10px;
+        
+    }
+}
+
+.header__link a {
+    text-decoration: none;
+    font-size: 23px;
+    color: rgb(233, 0, 0);
+    padding: 10px 15px;
+    border-radius: 15px;
+    background-color: rgb(255, 251, 0);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    opacity: 0; /* Boshlanishda ko'rinmas */
+    animation: fadeIn 1s forwards; /* Animatsiya qo'shish */
+    animation-delay: 0.5s; /* Qayta ko'rinishni kechiktirish */
+    @media (max-width: 425px) {
+        padding: 5px 5px;
+        align-items: center;
+        display: flex;
+    }
+}
+
+.header__link a:nth-child(1) { animation-delay: 0.5s; }
+.header__link a:nth-child(2) { animation-delay: 0.6s; }
+.header__link a:nth-child(3) { animation-delay: 0.7s; }
+.header__link a:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact-info {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    margin: 30px auto; /* Markazga joylashtirish */
+    max-width: 600px; /* Maksimal kenglik */
+    position: relative; /* O'zgarish uchun */
+    animation: floatAnimation 3s ease-in-out infinite; /* Havoda muallab turish */
+}
+
+/* Havoda muallab turish effektini yaratish */
+@keyframes floatAnimation {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Yuqoriga harakat */
+    }
+    100% {
+        transform: translateY(0); /* Asl holatga qaytish */
+    }
+}
+
+.contact-info h2 {
+    text-align: center;
+    color: #ff6347; /* Yengil qizil rang */
+    font-size: 32px; /* Katta shrift */
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase; /* Harflarni katta qilish */
+    letter-spacing: 1px; /* Harflar orasidagi masofa */
+}
+
+.contact-info p {
+    font-size: 20px; /* Kattaroq shrift */
+    line-height: 1.5;
+    color: #444; /* O'qilishi qulay rang */
+    margin: 15px 0; /* Yuqori va pastki masofa */
+    text-align: center; /* Markazga joylashtirish */
+}
+
+.contact-info a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold; /* Qalin shrift */
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+    color: #0056b3; /* Hover paytida rang o'zgarishi */
+}
+
+.telegram-bot {
+    text-align: center;
+    margin-top: 30px; /* Yuqori masofani oshirish */
+}
+
+.telegram-bot button {
+    padding: 12px 30px; /* Katta tugma */
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 30px; /* Yumshoq qirralar */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* O'tish effektlari */
+    font-size: 20px; /* Tugma shriftini kattalashtirish */
+}
+
+.telegram-bot button:hover {
+    background-color: #ff4500;
+    transform: scale(1.05); /* Tugma kattalashtiriladi */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .contact-info {
+        padding: 30px;
+    }
+
+    .contact-info h2 {
+        font-size: 28px; /* Kichik ekranlar uchun shrift o'lchami */
+    }
+
+    .contact-info p {
+        font-size: 18px; /* Kichik ekranlar uchun matn o'lchami */
+    }
+
+    .telegram-bot button {
+        padding: 10px 20px; /* Kichik ekranlar uchun tugma o'lchami */
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: rgb(255, 217, 0);
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    color: #333;
+}
+

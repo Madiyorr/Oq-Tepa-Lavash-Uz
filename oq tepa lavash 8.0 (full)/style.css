@@ -1,0 +1,530 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    animation: fadeInnn 1s ease;
+}
+
+@keyframes fadeInnn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+
+header {
+    background-color: rgb(255, 217, 0);
+    @media (max-width: 1025px)  {
+        display: none;
+    }
+    @media (max-width: 763px) {
+        display: block;
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.wrapper-1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+}
+
+.animate_element-1 {
+    transform: rotate(-20deg);
+    position: relative;
+    top: 20px;
+}
+
+.element-1 {
+    animation: moveRight 3s forwards;
+    position: relative;
+    left: 60px;
+    top: -200px;
+    @media (max-width: 1389px) {
+        display: none;
+    }
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(230px);
+    }
+}
+
+.animate_element-2 {
+    transform: rotate(18deg);
+    position: relative;
+    top: 20px;
+}
+
+.element-2 {
+    animation: moveRight 3s forwards;
+    position: relative;
+    left: -90px;
+    top: -200px;
+ 
+    @media (max-width: 1389px) {
+        display: none;
+    }
+}
+
+.header__title {
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    img{
+        @media (max-width: 1025px)  {
+            display: none;
+        }
+    }
+}
+
+.header__title h1 {
+    color: red;
+    text-shadow: rgba(255, 255, 255, 0.767) 1px 0 10px;
+    font-size: 35px;
+    margin-left: 10px;
+    @media (max-width: 1025px)  {
+        display: none;
+    }
+    @media (max-width: 763px)  {
+        display: block;
+        
+    }
+}
+
+.header__link {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    position: relative;
+    right: -110px;
+    @media (max-width: 763px)  {
+        justify-content: start;
+        display: flex;
+        position: relative;
+        left: 30px;
+    }
+}
+
+.header__link a {
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(233, 0, 0);
+    text-shadow: rgb(255, 255, 255) 1px 0 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    transition: all 0.3s ease;
+    animation: fadeAni 1s forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+.header__link a:nth-child(1) { animation-delay: 0.5s; }
+.header__link a:nth-child(2) { animation-delay: 0.6s; }
+.header__link a:nth-child(3) { animation-delay: 0.7s; }
+.header__link a:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes fadeAni {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header__link a:hover {
+    text-shadow: rgb(185, 185, 185) 1px 0 10px;
+    color: rgb(255, 0, 0);
+}
+
+.wrapper-2 {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.wrapper-2 h3 {
+    font-size: 25px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: red;
+    border-radius: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    animation: newsAni forwards 0.5s ease;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+@keyframes newsAni {
+    0% {
+        opacity: 0;
+        width: 0%;
+        /* font-size: 0; */
+    }
+    50% {
+        opacity: 1;
+        /* font-size: 35px; */
+        width: 120%;
+    }
+    100% {
+        opacity: 1;
+        /* font-size: 25px; */
+        width: 100%;
+    }
+}
+
+main {
+    background-image: url(./images/img/1697452101081.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 820px;
+    overflow: hidden;
+    @media (max-width: 1026px) {
+        overflow: auto;
+    }
+}
+
+
+
+.news__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 2;
+    animation: cardAni forwards 1.5s ease;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+@keyframes cardAni {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        
+    }
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card h2 {
+    font-size: 18px;
+    color: #333;
+    margin: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #666;
+    margin: 0 10px 10px;
+}
+
+.card button {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: calc(100% - 20px);
+}
+
+.card button:hover {
+    background-color: #ff4500;
+}
+
+.animate__element-3 {
+    transform: rotate(-10deg);
+    position: relative;
+    top: 20px;
+}
+
+.element-3 {
+    animation: burgerRight 5s forwards;
+    position: relative;
+    left: -560px;
+    top: -650px;
+    @media (max-width: 1026px)  {
+        display: none;
+    }
+}
+
+@keyframes burgerRight {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(370px);
+    }
+}
+
+.animate__element-4 {
+    transform: rotate(10deg);
+    position: relative;
+    top: 20px;
+    @media (max-width: 1026px)  {
+        display: none;
+    }
+}
+
+.element-4 {
+    animation: elementRight 5s forwards;
+    position: relative;
+    left: 1270px;
+    top: -1250px;
+}
+
+@keyframes elementRight {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-370px);
+    }
+}
+
+.footer__link{
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+    a img {
+        filter: grayscale(100%); /* Rangsiz ko'rsatish */
+        transition: filter 0.5s ease; /* O'zgarish uchun yumshoq o'tish */
+        border-radius: 50%;
+    }
+    
+    a:hover img {
+        filter: grayscale(0%); /* Hover paytida rangli ko'rsatish */
+        box-shadow: 0px 0px 10px rgb(255, 255, 255);
+    }
+    
+}
+
+.wrapper-3{
+    /* margin-top: 35px; */
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    align-items: center;
+    .footer__text{
+        font-size: 30px;
+        color: white;
+        button{
+            padding: 10px;
+            background-color: rgb(180, 180, 180);
+            border: none;
+            border-radius: 50px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            &:hover{
+                background-color: yellow;
+                box-shadow: 0px 0px 10px rgb(255, 255, 255);
+
+            }
+        }
+    }
+}
+
+footer{
+    background-color: #666;
+}
+
+.yt{
+    border-radius: 50%;
+}
+
+/* Mobil qurilmalar uchun */
+@media (max-width: 768px) {
+    .wrapper-1 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header__link {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .header__title {
+        margin-bottom: 20px;
+    }
+
+    .wrapper-2 h3 {
+        font-size: 20px;
+    }
+
+    .card {
+        width: 90%; /* Kartaning kengligini mobilga moslashtirish */
+    }
+
+    .footer__link {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer__text {
+        text-align: center;
+        font-size: 24px;
+    }
+
+    .wrapper-3 {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+}
+
+/* Tabletlarga moslashtirish */
+@media (min-width: 769px) and (max-width: 1024px) {
+    header{
+        height: 3px;
+    }
+    
+    .wrapper-1 {
+        flex-direction: row;
+    }
+
+    .header__link {
+        gap: 1px;
+    }
+
+    .card {
+        width: 45%; /* Tabletlarda kartalar kengligini o'zgartirish */
+    }
+
+    .footer__link {
+        justify-content: center;
+    }
+}
+
+@keyframes footerAnimation {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.footer__text {
+    animation: footerAnimation 10s forwards; /* Animatsiya davomiyligi 10 soniya */
+    opacity: 0; /* Dastlabki holat */
+}
+
+.burgers {
+    position: relative;
+    top: -1800px;
+    transform: rotate(-10deg);
+    left: -300px;
+    animation: fadeBurger forwards 5s ease, floatAnimation 2s ease infinite; /* Ikkita animatsiya */
+    animation-delay: 3s;
+    opacity: 0;
+}
+
+@keyframes fadeBurger {
+    0% {
+        opacity: 0;
+        transform: rotate(-10deg);
+    }
+    50% {
+        opacity: 0;
+        transform: rotate(-10deg);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(-10deg);
+    }
+}
+
+@keyframes floatAnimation {
+    0% {
+        transform: translateY(0);
+        transform: rotate(-10deg);
+    }
+    50% {
+        transform: translateY(-20px); /* Havoda muallab turish */
+        
+    }
+    100% {
+        transform: translateY(0);
+        transform: rotate(-10deg);
+    }
+}
+
+
+

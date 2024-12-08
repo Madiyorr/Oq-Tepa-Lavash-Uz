@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./order.css">
+    <script defer src="./order.js"></script>
+    <title>Oq Tepa Lavash</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1>Buyurtma Berish</h1>
+                <nav>
+                    <ul class="header__link">
+                        <li><a href="../index.html">Bosh sahifa</a></li>
+                        <li><a href="./info.html">Biz haqimizda</a></li>
+                        <li><a href="../adminPage.html">Admin</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+   <!-- Cart Icon with Count -->
+   <div class="cart-icon">
+    <img src="../images/icon/pngwing.com.png" width="50" alt="Cart" id="cart-icon">
+</div>
+
+<!-- Cart Sidebar -->
+<div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+        <h3>Savatcha</h3>
+        <button id="close-cart" class="close-btn">X</button>
+    </div>
+    <ul class="cart-items">
+        <ul class="cart-items">
+        </ul>
+    </ul>
+    <div class="total-amount">
+        Umumiy narx: <span id="total-price">0 so'm</span>
+    </div>
+    <button class="clear__cart" id="clear-cart">Savatni tozalash</button>
+    <button class="btn-submit">Buyurtma berish</button>
+</div>
+      <!-- Profil Icon and Profile Panel -->
+<div class="profile-container">
+    <button id="profileButton">Profil</button>
+    <div id="profileBar" class="hidden">
+        <div class="profile-content">
+            <h2>Profil</h2>
+            <div id="profileInfo">
+                <!-- Profil ma'lumotlari shu yerda ko'rsatiladi -->
+            </div>
+            <button id="closeProfileButton">Yopish</button> <!-- Yopish tugmasi -->
+            <button id="loginButton">Login</button>
+        </div>
+    </div>
+</div>
+
+<!-- Login Panel -->
+<div id="loginBar" class="hidden">
+    <div class="login-container">
+        <h2>Registratsiya</h2>
+        <form id="loginForm">
+            <label for="name">Ism:</label>
+            <input type="text" id="name" placeholder="Ismingizni kiriting" required>
+            
+            <label for="phone">Telefon raqam:</label>
+            <input type="tel" id="phone" placeholder="+998 (90) 986 54 32" required>
+            
+            <label for="address">Manzil:</label>
+            <input type="text" id="address" placeholder="Shahar, Tuman, Kocha, Uy" required>
+            
+            <button type="submit">Registratsiya</button>
+        </form>
+    </div>
+</div>
+
+        <div class="wrapper-1">
+            <div class="head__block">
+                <h4>Oqtepa Lavash</h4>
+                <p class="head_p">Yetkazib berish vaqti • 30 - 40 min</p>
+            </div>
+        </div>
+        <div class="search__block">
+            <input type="text" id="search" placeholder="Lavash qidiring...">
+        </div>
+        <div id="searchResults"></div>
+        <div class="filter__block">
+            <button onclick="filterFoods('yangilik')">Yangiliklar</button>
+            <button onclick="filterFoods('tovuq')">Tovuq</button>
+            <button onclick="filterFoods('xit')">Xitlar</button>
+            <button onclick="filterFoods('lavash')">Lavash</button>
+            <button onclick="filterFoods('doner')">Donerlar</button>
+            <button onclick="filterFoods('burger')">Burgerlar</button>
+            <button onclick="filterFoods('sendvich')">Sendvich</button>
+            <button onclick="filterFoods('snek')">Sneklar</button>
+            <button onclick="filterFoods('sous')">Souslar</button>            
+        </div>
+        <div class="modal" id="productModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img id="modalImage" src="" alt="Product Image">
+                <h2 id="modalName"></h2>
+                <p id="modalDescription"></p>
+                <p id="modalPrice"></p>
+            </div>
+        </div>
+        
+        <p id="noResultsMessage" style="color: red; display: none;">Kechirasiz, bunday mahsulot yo'q :( </p>
+        <div id="food-container"></div>
+
+        <div class="yangilik__block">
+            <h5>Yangiliklar</h5>
+            <div class="new_food"></div>
+        </div>
+        <div class="tovuq__block">
+            <h5>Tovuq</h5>
+            <div class="tovuq_food"></div>
+        </div>
+        <div class="xit__block">
+            <h5>Xitlar</h5>
+            <div class="xit_food"></div>
+        </div>
+        <div class="lavash__block">
+            <h5>Lavashlar</h5>
+            <div class="lavash_food"></div>
+        </div>
+        <div class="doner__block">
+            <h5>Donerlar</h5>
+            <div class="doner_food"></div>
+        </div>
+        <div class="burger__block">
+            <h5>Burgerlar</h5>
+            <div class="burger_food"></div>
+        </div>
+        <div class="sendvich__block">
+            <h5>Sendvich</h5>
+            <div class="sendvich_food"></div>
+        </div>
+        <div class="snek__block">
+            <h5>Sneklar</h5>
+            <div class="snek_food"></div>
+        </div>
+        <div class="sous__block">
+            <h5>Souslar</h5>
+            <div class="sous_food"></div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 Oqtepa Lavash. Barcha huquqlar himoyalangan.</p>
+                <div class="footer-links">
+                    <a href="">Bosh Sahifa</a>
+                    <a href="#about">Biz Haqimizda</a>
+                    <a href="#contact">Aloqa</a>
+                </div>
+            </div>
+        </footer>        
+    </div>
+</body>
+</html>
+

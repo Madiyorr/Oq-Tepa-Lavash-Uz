@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./report.css">
+    <script defer src="./report.js"></script>
+    <link rel="stylesheet" href="./report.css">
+    <title>Shikoyat - Oq Tepa Lavash</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="wrapper-1">
+                <div class="header__title">
+                    <img width="100" src="../images/icon/oqtepa_logo-01.png" alt="logo" class="animate-logo">
+                    <h1 class="animate-title">Shikoyat</h1>
+                </div>
+                <div class="header__link">
+                    <a href="../index.html" class="fade-link">Bosh Sahifa</a>
+                    <a href="./info.html" class="fade-link">Biz Haqimizda</a>
+                    <a href="./contact.html" class="fade-link">Aloqa</a>
+                    <a href="./report.html" class="fade-link">Shikoyat</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="wrapper_5">
+            <div class="text_block">
+                <label class="label" for="name">Ismingiz:</label>
+                <input type="text" id="name" placeholder="Ismingizni kiriting!" required><br>
+                <label class="label" for="age">Yoshingiz:</label>
+                <input type="text" id="age" placeholder="Yoshingizni kiriting!"><br>
+                <label class="label" for="phone">Telefon raqamingiz:</label>
+                <input type="text" id="phone" placeholder="Telefon raqamingizni kiriting!" required><br>
+                <label class="label" for="report">Shikoyatingiz:</label>
+                <input type="text" id="report" placeholder="Shikoyatingizni kiriting!" required><br>
+                <button class="tugma" onclick="sendToTelegram()">Yuborish!</button>
+                <button id="night-mode-toggle">Tun...</button>
+            </div>
+            <div class="img_block"></div>
+        </div>
+    </div>
+
+    <script>
+        function sendToTelegram() {
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const phone = document.getElementById('phone').value;
+            const report = document.getElementById('report').value;
+
+            const message = `Yangi yozuv:\nIsm: ${name}\nYosh: ${age}\nTelefon: ${phone}\nShikoyat: ${report}`;
+            
+            const token = '7220168908:AAEzpvGeEFG_OUNaRK9YFA2erDVb8_HejSI'; // Replace with your bot token
+            const chatId = '1857524341'; // Replace with your chat ID
+
+            const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'HTML'
+                }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Noqulaylik uchun Oq Tepa Lavash Ma'muryati tomonidan uzur so'raymiz! Shikoyatingizni ko'rib chiqamiz!");
+                    // Clear input fields after sending
+                    document.getElementById('name').value = '';
+                    document.getElementById('age').value = '';
+                    document.getElementById('phone').value = '';
+                    document.getElementById('report').value = '';
+                } else {
+                    alert('Xatolik yuz berdi!');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Xatolik yuz berdi!');
+            });
+        }
+    </script>
+</body>
+</html>

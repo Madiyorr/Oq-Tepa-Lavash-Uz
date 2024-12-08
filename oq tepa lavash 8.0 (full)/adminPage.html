@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./adminPage.css">
+  <script defer src="./adminPage.js"></script>
+  <title>Document</title>
+</head>
+<body>
+    <a href="./pages/order.html">Orqaga</a>
+          <!-- Admin Panel Login Form -->
+<div id="adminLogin" class="admin-login">
+  <h2>Admin Panel</h2>
+  <input type="password" id="adminPassword" placeholder="Parolni kiriting" /><br>
+  <button id="loginButton">Kirish</button>
+  <p id="loginError" style="color: red; display: none;">Noto'g'ri parol, Qaytadan urunib ko'ring!</p>
+</div>
+
+<!-- Admin Panel Content (hidden until login is successful) -->
+<div id="adminPanel" class="admin-panel" style="display: none;">
+  <h2>Admin Panel</h2>
+  <!-- Add your admin content here (e.g., food management) -->
+  <form id="addFoodForm">
+      <input type="text" id="foodName" placeholder="Mahsulot nomi" required />
+      <input type="text" id="foodDescription" placeholder="Tavsifi" required />
+      <input type="number" id="foodPrice" placeholder="Narxi" required />
+      <input type="text" id="foodImage" placeholder="Rasm URL" required />
+      <select id="foodCategory" required>
+          <option value="yangilik">Yangilik</option>
+          <option value="tovuq">Tovuq</option>
+          <option value="xit">Xit</option>
+          <option value="lavash">Lavash</option>
+          <option value="doner">Doner</option>
+          <option value="burger">Burger</option>
+          <option value="sendvich">Sendvich</option>
+          <option value="snek">Snek</option>
+          <option value="sous">Sous</option>
+      </select>
+      <button type="submit">Qo'shish</button>
+  </form>
+  <div id="adminPanel" class="admin-panel" style="display:none;">
+      <h3>Mahsulotlarni Boshqarish</h3>
+  
+      <!-- Mahsulotlar ro'yxati -->
+      <div id="productList">
+          <h4>Mahsulotlar Ro'yxati</h4>
+          <ul id="products"></ul>
+      </div>
+  
+      <!-- Mahsulot qo'shish formasi -->
+      <form id="addFoodForm" class="form">
+          <h3>Yangi Mahsulot Qo'shish</h3>
+          <label for="foodName">Mahsulot nomi</label>
+          <input type="text" id="foodName" placeholder="Mahsulot nomini kiriting" required>
+  
+          <label for="foodDescription">Ta'rif</label>
+          <textarea id="foodDescription" placeholder="Mahsulotni tavsiflang" required></textarea>
+  
+          <label for="foodPrice">Narxi</label>
+          <input type="number" id="foodPrice" placeholder="Narxni kiriting" required>
+  
+          <label for="foodImage">Rasm URL</label>
+          <input type="text" id="foodImage" placeholder="Rasm URL" required>
+  
+          <label for="foodCategory">Kategoriya</label>
+          <select id="foodCategory" required>
+              <option value="yangilik">Yangilik</option>
+              <option value="tovuq">Tovuq</option>
+              <option value="xit">Xit</option>
+              <option value="lavash">Lavash</option>
+              <option value="doner">Doner</option>
+              <option value="burger">Burger</option>
+              <option value="sendvich">Sendvich</option>
+              <option value="snek">Snek</option>
+              <option value="sous">Sous</option>
+          </select>
+  
+          <button type="submit" class="btn">Mahsulotni qo'shish</button>
+      </form>
+  
+      <!-- Mahsulotni tahrirlash formasi -->
+      <div id="editProductForm" style="display:none;">
+          <h3>Mahsulotni Tahrirlash</h3>
+          <form id="editForm">
+              <label for="editFoodName">Mahsulot nomi</label>
+              <input type="text" id="editFoodName" placeholder="Mahsulot nomini kiriting" required>
+  
+              <label for="editFoodDescription">Ta'rif</label>
+              <textarea id="editFoodDescription" placeholder="Mahsulotni tavsiflang" required></textarea>
+  
+              <label for="editFoodPrice">Narxi</label>
+              <input type="number" id="editFoodPrice" placeholder="Narxni kiriting" required>
+  
+              <label for="editFoodImage">Rasm URL</label>
+              <input type="text" id="editFoodImage" placeholder="Rasm URL" required>
+  
+              <label for="editFoodCategory">Kategoriya</label>
+              <select id="editFoodCategory" required>
+                  <option value="yangilik">Yangilik</option>
+                  <option value="tovuq">Tovuq</option>
+                  <option value="xit">Xit</option>
+                  <option value="lavash">Lavash</option>
+                  <option value="doner">Doner</option>
+                  <option value="burger">Burger</option>
+                  <option value="sendvich">Sendvich</option>
+                  <option value="snek">Snek</option>
+                  <option value="sous">Sous</option>
+              </select>
+  
+              <button type="submit" class="btn">Mahsulotni Tahrirlash</button>
+              <button type="button" id="cancelEdit" class="btn">Bekor qilish</button>
+          </form>
+      </div>
+  </div>
+</div>
+<script>
+        // Mahsulot qo'shish funksiyasi
+        document.getElementById('addFoodForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Mahsulotni olish
+            const foodName = document.getElementById('foodName').value;
+            const foodDescription = document.getElementById('foodDescription').value;
+            const foodPrice = document.getElementById('foodPrice').value;
+            const foodImage = document.getElementById('foodImage').value;
+            const foodCategory = document.getElementById('foodCategory').value;
+
+            // Mahsulot ma'lumotini obyekt sifatida yaratish
+            const foodData = {
+                name: foodName,
+                description: foodDescription,
+                price: foodPrice,
+                image: foodImage,
+                category: foodCategory
+            };
+
+            // localStorage-ga qo'shish (agar birinchi mahsulot bo'lsa, yangi massiv yaratamiz)
+            let foods = JSON.parse(localStorage.getItem('foods')) || [];
+            foods.push(foodData);
+            localStorage.setItem('foods', JSON.stringify(foods));
+
+            // Zakaz sahifasiga o'tish
+            window.location.href = './pages/order.html';
+        });
+    </script>
+</body>
+</html>

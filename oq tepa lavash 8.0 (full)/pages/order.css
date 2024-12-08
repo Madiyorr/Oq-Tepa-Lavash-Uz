@@ -1,0 +1,1005 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    transition: opacity 0.5s ease;
+    animation: fadeInnn 1s ease;
+}
+
+@keyframes fadeInnn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+/* Cart icon */
+.cart-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+/* Cart Sidebar */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Hidden by default */
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    transition: right 0.3s ease;
+    z-index: 1050;
+}
+
+/* Cart Sidebar */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -320px; /* Yashirin holat */
+    width: 320px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    transition: right 0.4s ease;
+    z-index: 1050;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* Savatcha ochilganda */
+.cart-sidebar.open {
+    right: 0;
+}
+
+/* Cart Header */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.cart-header h3 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #333;
+}
+
+.cart-header .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #555;
+    cursor: pointer;
+}
+
+/* Cart Items */
+.cart-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cart-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+/* .cart-items li:hover {
+    transform: scale(1.02);
+} */
+
+/* Mahsulot rasmi */
+.cart-items img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Mahsulot ma'lumotlari */
+.cart-item-details {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.cart-item-details h4 {
+    font-size: 1rem;
+    color: #333;
+    margin: 0;
+    font-weight: bold;
+}
+
+.cart-item-details .price {
+    color: #28a745;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Profil tugmasi */
+#profileButton {
+    background-color: #5e5e5e;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 15px 20px;
+    font-size: 18px;
+    position: fixed;
+    top: 30px;
+    right: 1800px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    @media (max-width: 425px) {
+        right: 370px;
+    }
+    @media (max-width: 1440px) {
+        right: 370px;
+    }
+}
+
+/* Profil panelini yashirish uchun */
+#profileBar.hidden {
+    display: none;
+}
+
+
+#profileButton:hover {
+    background-color: #444444;
+    transform: scale(1.1);
+}
+
+/* Profil paneli */
+#profileBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#profileBar.hidden {
+    display: none;
+}
+
+.profile-content {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-content h2 {
+    color: #ff6f00;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#profileInfo {
+    margin-bottom: 30px;
+    font-size: 16px;
+    color: #333;
+}
+
+#profileInfo p {
+    margin: 10px 0;
+}
+
+#profileBar button {
+    background-color: #ff6f00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+#profileBar button:hover {
+    background-color: #e65100;
+    transform: scale(1.05);
+}
+
+/* Login paneli */
+#loginBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#loginBar.hidden {
+    display: none;
+}
+
+.login-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-container h2 {
+    color: #ff6f00;
+    margin-bottom: 30px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.login-container label {
+    display: block;
+    text-align: left;
+    margin: 12px 0 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.login-container input:focus {
+    border-color: #ff6f00;
+    outline: none;
+}
+
+.login-container button {
+    background-color: #ff6f00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.login-container button:hover {
+    background-color: #e65100;
+    transform: scale(1.05);
+}
+
+.login-container button:focus {
+    outline: none;
+}
+
+.login-container button:active {
+    transform: scale(0.98);
+}
+
+#loginButton{
+    margin-top: 10px;
+}
+
+/* Close button for Profile and Login panels */
+button.close-btn {
+    background: none;
+    color: white;
+    font-size: 20px;
+    border: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+button.close-btn:hover {
+    color: #ff6f00;
+}
+
+/* Responsive dizayn uchun */
+@media (max-width: 480px) {
+    .login-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    #profileButton {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+
+.cart-item-details .quantity {
+    font-size: 0.8rem;
+    color: #555;
+}
+
+/* Umumiy miqdor va narx */
+.total-amount {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    padding: 10px 0;
+    background: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Buyurtma tugmasi */
+.btn-submit {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Buyurtma tugmasi */
+.clear__cart {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+}
+
+.clear__cart:hover {
+    background-color: #b30000;;
+    transform: scale(1.05);
+}
+
+/* Remove item icon */
+.remove-item {
+    font-size: 1.2rem;
+    color: #f44336; /* Red color */
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.header {
+    position: relative; /* Pseudoelementni to'g'ri joylash uchun */
+    color: white; /* Matn rangi */
+    padding: 15px 0; /* Yuqorida va pastda bo'shliq */
+    text-align: center; /* Matnni markazga joylashtirish */
+    border-radius: 10px; /* Burchaklarni yumshatish */
+    margin-bottom: 20px; /* Pastda bo'shliq */
+    overflow: hidden; /* Pseudoelement chiqmasligi uchun */
+    h1{
+        color: red;
+        text-shadow: 1px 1px 2px rgb(255, 255, 255);
+    }
+}
+
+.header::before {
+    content: ''; /* Pseudoelement uchun zarur */
+    position: absolute; /* Element ustida to'g'ri joylashishi uchun */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(./img/oqtepalavashuz_cover.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(3px); /* Blur effekti */
+    z-index: 1; /* Pseudoelementni boshqa elementlardan pastga joylash */
+}
+
+.header-content {
+    max-width: 1200px; /* Max width header */
+    margin: 0 auto; /* Markazga joylashtirish */
+    position: relative; /* Matnni yuqoriga ko'tarish uchun */
+    z-index: 2; /* Matnni yuqoriga chiqarish */
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+.header__link {
+    list-style: none; /* Ro'yxat belgilarini olib tashlash */
+    padding: 0; /* Paddingni olib tashlash */
+}
+
+.header__link li {
+    display: inline; /* Qator ichida joylash */
+    margin: 0 15px; /* Har bir element orasida bo'shliq */
+}
+
+.header__link a {
+    color: white; /* Link rangi */
+    text-decoration: none; /* Ustiga bosilganda chiziq yo'q */
+    transition: color 0.3s; /* Hover effekt uchun */
+    font-size: 20px;
+}
+
+.header__link a:hover {
+    color: rgb(226, 226, 226);
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+
+.wrapper-1 {
+    display: flex;
+    position: relative; /* Pseudoelementni to'g'ri joylashtirish uchun */
+    margin-bottom: 20px;
+    background-image: url(./img/fon.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    max-width: 1200px;
+    height: 400px;
+    overflow: hidden; /* Pseudoelement chiqib ketmasligi uchun */
+    border-radius: 20px;
+    align-items: center;
+}
+
+/* Qoraroq effekt berish uchun */
+.wrapper-1::before {
+    content: ''; /* Pseudoelement uchun zarur */
+    position: absolute; /* Element ustida to'g'ri joylashishi uchun */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Qoraroq qoplama, 0.5 orqali shaffoflik */
+    z-index: 1; /* Pseudoelementni boshqa elementlardan yuqori qilish */
+}
+
+/* Matn yoki boshqa kontent uchun */
+.wrapper-1 h4,
+.wrapper-1 p {
+    position: relative; /* Matnni yuqori qilish uchun */
+    z-index: 2; /* Matnni yuqoriga chiqarish */
+    /* color: white; Matn rangini belgilash */
+    justify-content: start;
+    display: flex;
+    margin-left: 35px;
+}
+
+.head__block h4 {
+    color: white;
+    font-size: 48px;
+    /* font-size: 2em; */
+    margin-bottom: 5px;
+}
+
+.head_p {
+    color: black;
+    font-size: 16px;
+    background-color: white;
+    max-width: 266px;
+    padding: 12px;
+    border-radius: 50px;
+    margin: 4px;
+}
+
+.search__block {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#search {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.filter__block {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.filter__block button {
+    background-color: #a8a8a846;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter__block button:hover {
+    background-color: #69696946;
+}
+
+.yangilik__block, .tovuq__block {
+    margin-bottom: 20px;
+}
+
+.yangilik__block h5, .tovuq__block h5 {
+    color: #000000;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.new_food, .tovuq_food {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+
+.card {
+    background-color: #f3f3f8;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    border-color: #38383886;
+}
+
+.card-img {
+    width: 90%;
+    height: 150px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-radius: 20px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.card-body {
+    padding: 15px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.card-title {
+    font-size: 16px;
+    color: #000000;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.card-text {
+    font-size: 0.9em;
+    color: #555;
+    flex-grow: 1;
+}
+
+.card-price {
+    font-size: 1.1em;
+    color: #000000;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.btn-order {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 7px;
+    width: 100%;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.055);
+}
+
+.btn-order:hover {
+    background-color: #aaaaaa93;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.quantity-input{
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.527);
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+    z-index: 9999; /* Modalni yuqori qilish */
+}
+
+.modal.show {
+    display: flex; 
+    opacity: 1; 
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeIn 0.3s;
+}
+
+.close{
+    font-size: 30px;
+    cursor: pointer;
+    &:hover{
+        transform: scale(1);
+    }
+}
+
+.modal img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+
+.btn-plus, .btn-minus {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 5px;
+    font-size: 16px;
+}
+
+/* .cart-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    max-height: 70%;
+    overflow-y: auto;
+    z-index: 10;
+    transition: 1s ease;
+    animation: fadeIn 0.5s ease-in-out;
+    opacity: 0; 
+    animation-fill-mode: forwards; 
+    @media (max-width: 1219px) {
+        width: 90%;
+        margin: 0 auto;
+        height: 200px;
+        overflow-y: auto;
+    }
+} */
+
+/* @keyframes fadeIn {
+    from {
+        opacity: 0; 
+        transform: translateX(100px); 
+    }
+    to {
+        opacity: 1; 
+        transform: translateX(0);
+    }
+} */
+
+/* .cart h2 {
+    text-align: center;
+    color: #c0392b;
+    margin-bottom: 15px;
+}
+
+.cart-items {
+    list-style: none;
+    padding: 0;
+} */
+
+/* .cart-items li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+} */
+
+/* .cart-item-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+} */
+
+/* .total-amount {
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 10px;
+} */
+
+.xit__block{
+    h5{
+        font-size: 20px;
+    }
+}
+
+.xit_food {
+    display: flex;
+    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start; /* Kartalarni markazga joylash */
+    gap: 15px; /* Kartalar orasidagi bo'shliq */
+}
+
+
+.lavash__block{
+    h5{
+        font-size: 20px;
+    }
+}
+
+.lavash_food {
+    display: flex;
+    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start; /* Kartalarni markazga joylash */
+    gap: 15px; /* Kartalar orasidagi bo'shliq */
+}
+
+.doner__block{
+    h5{
+        font-size: 20px;
+    }
+}
+
+.doner_food {
+    display: flex;
+    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start; /* Kartalarni markazga joylash */
+    gap: 15px; /* Kartalar orasidagi bo'shliq */
+}
+
+.burger__block{
+    h5{
+        font-size: 20px;
+    }
+}
+
+.burger_food {
+    display: flex;
+    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start; /* Kartalarni markazga joylash */
+    gap: 15px; /* Kartalar orasidagi bo'shliq */
+}
+
+.sendvich__block{
+    h5{
+        font-size: 20px;
+    }
+}
+
+.sendvich_food {
+    display: flex;
+    flex-wrap: wrap;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start; /* Kartalarni markazga joylash */
+    gap: 15px; /* Kartalar orasidagi bo'shliq */
+}
+
+.snek__block{
+    h5{
+        font-size: 20px;
+    }
+}
+
+.snek_food {
+    display: flex;
+    flex-wrap: wrap;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start; /* Kartalarni markazga joylash */
+    gap: 15px; /* Kartalar orasidagi bo'shliq */
+}
+
+.sous__block{
+    h5{
+        font-size: 20px;
+    }
+}
+
+.sous_food {
+    display: flex;
+    flex-wrap: wrap;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start; /* Kartalarni markazga joylash */
+    gap: 15px; /* Kartalar orasidagi bo'shliq */
+}
+
+.footer {
+    background-color: #555; /* Background color of the footer */
+    color: white; /* Text color */
+    padding: 20px 0; /* Padding above and below */
+    text-align: center; /* Center-align text */
+    border-radius: 10px; /* Rounded corners */
+    margin-top: 20px; /* Space above the footer */
+}
+
+.footer-content {
+    max-width: 1200px; /* Max width to align with the container */
+    margin: 0 auto; /* Center the footer */
+}
+
+.footer-links {
+    margin-top: 10px; /* Space above links */
+}
+
+.footer-links a {
+    color: white; /* Link color */
+    margin: 0 10px; /* Space between links */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Transition effect for hover */
+}
+
+.footer-links a:hover {
+    color: #c0392b; /* Change color on hover */
+}
+
+.cart {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.cart-items {
+    list-style-type: none;
+    padding: 0;
+    max-height: 300px;
+    overflow-y: auto;
+    position: relative;
+    margin: 0 auto;
+}
+
+.cart-item-img {
+    width: 150px;
+    height: 100px;
+    
+}
+
+.total-amount {
+    font-weight: bold;
+}
+
+.btn-cancel, .btn-submit {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: .5s;
+}
+
+.btn-cancel{
+    background-color: red;
+    &:hover{
+        background-color: rgb(177, 0, 0);
+    }
+}
+
+.btn-submit:hover {
+    background-color: #337536;
+}
+
